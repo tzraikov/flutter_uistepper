@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:uistepper/uistepper.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,8 +14,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        body: SafeArea(child: Center(child: UIStepper(value: 12, onChanged: (value) {})))
-      ),
+        body: Center(
+          child: UIStepper(value: 12, onChanged: (value) {})
+        )
+      )
     );
   }
 }

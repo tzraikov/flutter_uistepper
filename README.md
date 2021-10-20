@@ -1,39 +1,48 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+## Flutter UIStepper widget
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+A widget for incrementing or decrementing a value by using +/- buttons. This is a Flutter implementation of the [UIStepper](https://developer.apple.com/documentation/uikit/uistepper) control found in Apple iOS UIKit.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+![Image 1](https://github.com/tzraikov/flutter_uistepper/raw/main/screenshots/1.png "Image 1")
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+First import it in your Dart code:
 
 ```dart
-const like = 'sample';
+import 'package:uistepper/uistepper.dart';
 ```
 
-## Additional information
+Instantinate it in your **build** method and use a **double** property to store its value:
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+```dart
+double stepperValue = 1;
+//...
+UIStepper(
+    value: stepperValue, 
+    onChanged: (value) { setState(() => stepperValue = value); }
+);
+```
+
+Specify minimum and maximum values by using the corresponding **minimumValue** and **maximumValue** properties. The increment/decrement step is determined by the **stepValue** property, The **wraps** property indicates whether to wrap the current value to its minumum or maximum values when using **stepValue** different than **1**:
+
+```dart
+UIStepper(
+    value: stepperValue, 
+    minumumValue: 1,
+    maximumValue: 100,
+    stepValue: 5,
+    wraps: true,
+    onChanged: (value) { setState(() => stepperValue = value); }
+);
+```
+
+You can customize various attributes, for example the **tintColor** property sets +/- button color and the **showLabel** property determines whether to show or not the label:
+
+```dart
+UIStepper(
+    value: stepperValue, 
+    tintColor: Colors.red,
+    showLabel: false,
+    onChanged: (value) { setState(() => stepperValue = value); }
+);
+```
